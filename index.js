@@ -5,5 +5,5 @@ const app = express();
 app.use(json());
 app.use('/', router);
 app.listen(3000, function () {
-    console.log('listening on port 80');
+    console.log('listening on port 3000');
 });
