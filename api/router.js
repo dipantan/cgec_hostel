@@ -1,10 +1,14 @@
 import { Router } from 'express';
 import { insertStudents, updateStudents, deleteStudents, getStudents } from '../service/service';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 var router = Router();
 
 // Home page route.
 router.get('/', function (req, res) {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     res.sendFile(__dirname + '/index.html');
 })
 
