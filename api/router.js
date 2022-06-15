@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import { insertStudents, updateStudents, deleteStudents, getStudents } from '../service/service';
+import express from 'express';
+import { insertStudents, updateStudents, deleteStudents, getStudents } from '../service/service.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-var router = Router();
+const router = express.Router();
 
 // Home page route.
 router.get('/', function (req, res) {
