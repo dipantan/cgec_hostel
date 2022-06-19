@@ -74,7 +74,7 @@ router.get('/getStudents/:email', function (req, res) {
             return;
         }
         // cookie session 
-        res.cookie('student', 'student', { maxAge: 900000, httpOnly: true });
+        res.cookie('student', result.email, { maxAge: 900000, httpOnly: true });
         res.json(result[0]);
     })
 })
