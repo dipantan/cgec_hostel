@@ -43,10 +43,10 @@ export function deleteStudents(data, callback) {
 }
 
 // function to get students
-export function getStudents(data, callback) {
+export function getStudents(email, callback) {
     connection.query(
         "select * from students where email=?",
-        [data.email],
+        [email],
         function (err, result) {
             if (err) {
                 return callback(err, null);
