@@ -73,7 +73,9 @@ router.post('/getStudents', function (req, res) {
             });
             return;
         }
-        res.json(result);
+        // cookie session 
+        res.cookie('student', 'student', { maxAge: 900000, httpOnly: true });
+        res.json(result[0]);
     })
 })
 
