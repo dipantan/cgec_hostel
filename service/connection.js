@@ -2,7 +2,7 @@ import { createConnection } from 'mysql2'
 const MYSQLHOST = 'containers-us-west-34.railway.app'
 const MYSQLUSER = 'root'
 const MYSQLDATABASE = 'railway'
-const MYSQLPASSWORD = '6F49LlSjuiLqjNzr9GFI'
+const MYSQLPASSWORD = 'iU4OSNlbhmjuw1FEHCYn'
 const MYSQLPORT = 6462
 const connection = createConnection({
     host: MYSQLHOST,
