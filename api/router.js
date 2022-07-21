@@ -64,8 +64,8 @@ router.post('/deleteStudents', function (req, res) {
 })
 
 // get student details 
-router.get('/getStudents/:email', function (req, res) {
-    getStudents(req.params.email, function (err, result) {
+router.get('/getStudents/', function (req, res) {
+    getStudents(req.query, function (err, result) {
         if (result.length == 0) {
             res.json({
                 status: 'error',
