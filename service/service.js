@@ -3,8 +3,8 @@ import connection from './connection.js';
 // function to register students
 export function insertStudents(data, callback) {
     connection.query(
-        "insert into students (email,password,mobile,department,semester,name) values (?,?,?,?,?,?)",
-        [data.email, data.password, data.mobile, data.department, data.semester, data.name],
+        "insert into students (email,password,mobile,department,semester,name,roll) values (?,?,?,?,?,?,?)",
+        [data.email, data.password, data.mobile, data.department, data.semester, data.name, data.roll],
         function (err, result) {
             if (err) {
                 return callback(err, null);
@@ -17,8 +17,8 @@ export function insertStudents(data, callback) {
 // function to update students
 export function updateStudents(data, callback) {
     connection.query(
-        "update students set password=?,mobile=?,department=?,semester=?,name=? where email=?",
-        [data.password, data.mobile, data.department, data.semester, data.name, data.email],
+        "update students set password=?,mobile=?,department=?,semester=?,name=?,roll=? where email=?",
+        [data.password, data.mobile, data.department, data.semester, data.name, data.roll, data.email],
         function (err, result) {
             if (err) {
                 return callback(err, null);
