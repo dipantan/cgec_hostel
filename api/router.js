@@ -1,5 +1,5 @@
 import express from 'express';
-import { insertStudents, updateStudents, deleteStudents, getStudents } from '../service/service.js';
+import { insertStudents, updateStudents, deleteStudents, getStudents, insertRoomChange, insertComplain, chnageMeal } from '../service/service.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -64,7 +64,7 @@ router.post('/deleteStudents', function (req, res) {
 })
 
 // get student details 
-router.get('/getStudents/', function (req, res) {
+router.get('/getStudents', function (req, res) {
     getStudents(req.query, function (err, result) {
         if (result.length == 0) {
             res.json({
@@ -78,5 +78,59 @@ router.get('/getStudents/', function (req, res) {
         res.json(result[0]);
     })
 })
+
+// room change request api
+router.post('/roomChange', function (req, res) {
+    insertRoomChange(req.body, function (err, result) {
+        if (err) {
+            res.json({
+                status: "error",
+                message: "Previous request not completed"
+            })
+            return;
+        }
+        res.json({
+            status: "success",
+            message: "Request registered successfully"
+        })
+    })
+})
+
+// complain box
+router.post('/complain', function (req, res) {
+    insertComplain(req.body, function (err, result) {
+        if (err) {
+            res.json({
+                status: "error",
+                message: err.sqlMessage
+            })
+            return;
+        } else {
+            res.json({
+                status: "success",
+                message: "Your complain has been accepted"
+            })
+        }
+    })
+})
+
+// meal start/stop
+router.post('/meal', function (req, res) {
+    chnageMeal(req.body, function (err, result) {
+        if (err) {
+            res.json({
+                status: 'error',
+                message: err.sqlMessage
+            })
+            return;
+        } else {
+            res.json({
+                status: 'success',
+                message: 'Your meal request registered'
+            })
+        }
+    })
+})
+
 
 export default router;
