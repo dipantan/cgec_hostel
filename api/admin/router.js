@@ -136,7 +136,7 @@ adminRouter.post("/room", (req, res) => {
     if (err) {
       res.json({
         status: "error",
-        message: "Something went wrong",
+        message: result,
       });
       return;
     } else if (result.length == 0) {

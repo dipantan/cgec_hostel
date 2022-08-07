@@ -64,7 +64,7 @@ export function students(callback) {
 export function updateRoom(data, callback) {
   connection.query(
     "update room_change_request set status=? where id=?",
-    [data.status,data.id],
+    [data.status, data.id],
     function (err, result) {
       if (err) {
         return callback(err, null);
