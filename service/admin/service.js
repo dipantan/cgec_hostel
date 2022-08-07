@@ -28,7 +28,7 @@ export function complain(callback) {
 
 export function room(callback) {
   connection.query(
-    "SELECT `from_room`,`to_room`,`reason`,`date`,`status`,students.name,students.email FROM room_change_request INNER JOIN students WHERE students.email=room_change_request.email",
+    "SELECT `id`,`from_room`,`to_room`,`reason`,`date`,`status`,students.name,students.email FROM room_change_request INNER JOIN students WHERE students.email=room_change_request.email",
     (err, result) => {
       // console.log(result);
       if (err) {
@@ -59,4 +59,17 @@ export function students(callback) {
     }
     return callback(null, result);
   });
+}
+
+export function updateRoom(data, callback) {
+  connection.query(
+    "update room_change_request set status=? where id=?",
+    [data.status,data.id],
+    function (err, result) {
+      if (err) {
+        return callback(err, null);
+      }
+      return callback(null, result);
+    }
+  );
 }

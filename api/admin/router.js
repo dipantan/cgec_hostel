@@ -1,6 +1,13 @@
 import express from "express";
 import path from "path";
-import { adminLogin, complain,meal,room,students } from "../../service/admin/service.js";
+import {
+  adminLogin,
+  complain,
+  meal,
+  room,
+  students,
+  updateRoom,
+} from "../../service/admin/service.js";
 
 const adminRouter = express.Router();
 
@@ -160,6 +167,23 @@ adminRouter.post("/students", (req, res) => {
       return;
     }
     res.json(result);
+  });
+});
+
+// update room
+adminRouter.post("/updateroom", (req, res) => {
+  updateRoom(req.body, (err, result) => {
+    if (err) {
+      res.json({
+        status: "error",
+        messsage: "Something went wrong",
+      });
+      return;
+    }
+    res.json({
+      status: "success",
+      data: result,
+    });
   });
 });
 
