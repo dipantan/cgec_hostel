@@ -7,6 +7,7 @@ import {
   room,
   students,
   updateRoom,
+  updateStudent,
 } from "../../service/admin/service.js";
 
 const adminRouter = express.Router();
@@ -184,6 +185,20 @@ adminRouter.post("/updateroom", (req, res) => {
       status: "success",
       data: result,
     });
+  });
+});
+
+// update st
+adminRouter.post("/updatestudent", (req, res) => {
+  updateStudent(req.body, (err, result) => {
+    if (err) {
+      res.json({
+        status: "error",
+        message: result.message,
+      });
+      return;
+    }
+    res.json(result);
   });
 });
 

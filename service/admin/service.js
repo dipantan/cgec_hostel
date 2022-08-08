@@ -73,3 +73,23 @@ export function updateRoom(data, callback) {
     }
   );
 }
+
+export function updateStudent(data, callback) {
+  connection.query(
+    "update students set name=?,mobile=?,department=?,semester=?,roll=?  where email=?",
+    [
+      data.name,
+      data.mobile,
+      data.department,
+      data.semester,
+      data.roll,
+      data.email,
+    ],
+    function (err, result) {
+      if (err) {
+        return callback(err, null);
+      }
+      return callback(null, result);
+    }
+  );
+}
